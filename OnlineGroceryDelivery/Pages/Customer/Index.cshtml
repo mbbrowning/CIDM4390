@@ -1,0 +1,70 @@
+﻿@page
+@model OnlineGroceryDelivery.Pages.Customer.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+<style>
+    body {
+        font-size: 0.95rem!important;
+    }
+</style>
+<h1>Customers</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table" width="105%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].LoginId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].Password)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].Address)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].Phone)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Customer[0].Email)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Customer) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.LoginId)
+            </td>
+            <td>
+                @Html.Raw("\u2022\u2022\u2022\u2022\u2022")
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Phone)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.CustomerId">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.CustomerId">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.CustomerId">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
